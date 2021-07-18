@@ -1,0 +1,44 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:AvaloniaTest.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="AvaloniaTest.Views.MainWindow"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="AvaloniaTest">
+
+    <Window.KeyBindings>
+        <KeyBinding Gesture="Ctrl+O" Command="{Binding Open}" />
+        <KeyBinding Gesture="Ctrl+S" Command="{Binding Save}" />
+    </Window.KeyBindings>
+    <Design.DataContext>
+        <vm:MainWindowViewModel />
+    </Design.DataContext>
+    <!--Стандартная разметочка гридом-->
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <!--Менюшечка-->
+        <Menu Grid.Row="0" Grid.Column="0" MaxHeight="20">
+            <MenuItem Header="File">
+                <MenuItem Header="Open" Command="{Binding Open}" />
+                <MenuItem Header="Save As" Command="{Binding Save}" />
+            </MenuItem>
+            <MenuItem Header="Tools">
+                <MenuItem Header="Select" Command="{Binding OpenPersonWindow}"/>
+            </MenuItem>
+        </Menu>
+        <!--Основное текстовое поле-->
+        <Image Grid.Row="1" Grid.Column="0" Source="{Binding ImagePath}">
+            
+        </Image>
+        
+    </Grid>
+
+</Window>

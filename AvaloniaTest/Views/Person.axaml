@@ -1,0 +1,47 @@
+<Window xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:vm="using:AvaloniaTest.ViewModels"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" d:DesignWidth="200" d:DesignHeight="200"
+    Width="250" Height="300" CanResize="False"
+    x:Class="AvaloniaTest.Views.Person"
+    Icon="/Assets/avalonia-logo.ico"
+    Title="Person">
+
+    <Window.KeyBindings>
+        <KeyBinding Gesture="Ctrl+Q" Command="{Binding Discard}" />
+        <KeyBinding Gesture="Ctrl+S" Command="{Binding Save}" />
+    </Window.KeyBindings>
+    <Design.DataContext>
+         <vm:PersonViewModel />
+    </Design.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Menu Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+            <MenuItem Header="Save" Command="{Binding Save}" />
+            <MenuItem Header="Discard" />
+        </Menu>
+        <Label Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Content="Surname: " />
+        <TextBox Grid.Row="1" Grid.Column="1" MaxHeight="30" Text="{Binding Surname}" />
+        <Label Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Content="Name: " />
+        <TextBox Grid.Row="2" Grid.Column="1" MaxHeight="30" Text="{Binding Name}" />
+        <Label Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" Content="Second name: " />
+        <TextBox Grid.Row="3" Grid.Column="1" MaxHeight="30" Text="{Binding SecondName}" />
+        <Label Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" Content="Ged: " />
+        <TextBox Grid.Row="4" Grid.Column="1" MaxHeight="30" Text="{Binding Ged}" />
+        <Button Grid.Row="5" Grid.Column="0" HorizontalAlignment="Center" Content="Save" Command="{Binding Save}" />
+        <Button Grid.Row="5" Grid.Column="1" HorizontalAlignment="Center" Content="Discard" />
+    </Grid>
+</Window>
